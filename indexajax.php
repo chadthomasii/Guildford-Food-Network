@@ -19,16 +19,18 @@
 
      var name = "Hi";
      var password = "yes";
-     var email = "lalala";
+     var email = "dsf";
+     var type = "dist";
      
      $.ajax({
      type: "POST",
-     url: 'getDistributor.php',
+     url: 'http://localhost/Guildford-Food-Network/addUser.php',
      data:
      {
         'name' : name,
         'password' : password,
-        'email' : email
+        'email' : email,
+        'type' : type
      },
 
      success: function(response){
