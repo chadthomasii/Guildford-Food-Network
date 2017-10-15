@@ -83,11 +83,8 @@ class Database
     }
     
     //Gives result set
-    public function resultset()
+    public function resultSet()
     {
-        //Calls the execute function
-        $this->execute();
-        
         //Returns Results in an assosiative Array
         return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -95,8 +92,10 @@ class Database
     //Returns the last inserted ID of an insert statement
     public function lastInsertId()
     {
-        $this->dbh->lastInsertId();
+        return $this->dbh->lastInsertId();
     }
+
+
     
     
     
