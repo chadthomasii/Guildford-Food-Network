@@ -24,7 +24,7 @@
      
      $.ajax({
      type: "POST",
-     url: 'http://localhost/Guildford-Food-Network/addUser.php',
+     url: 'http://localhost/Guildford-Food-Network/addEvent.php',
      data:
      {
         'name' : name,
