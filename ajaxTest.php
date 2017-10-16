@@ -23,12 +23,10 @@
      
      $.ajax({
      type: "POST",
-     url: 'addEvent.php',
+     url: 'getEvent.php',
      data:
      {
         'name' : name,
-        'dateEvent' : date,
-        'details' : details
      },
 
      success: function(response){

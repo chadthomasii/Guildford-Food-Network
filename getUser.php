@@ -8,8 +8,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST')
     $stmt= $database->prepare("SELECT * FROM users WHERE email = :email");
     $stmt->bindParam(":email", $_POST['email']);
     $stmt->execute();
-    $results= $stmt->fetchAll(PDO::FETCH_ASSOC);
-    $json =json_encode($results);
+    $results= $stmt->fetchAll(PDO::FETCH_OBJECT);
+    $json = json_encode($results);
     echo $json;
 
 }
