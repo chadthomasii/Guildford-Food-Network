@@ -17,20 +17,18 @@
     <script>
      
 
-     var name = "Hi";
-     var password = "yes";
-     var email = "dsf";
-     var type = "dist";
+     var name = "Test Event";
+     var date = "2017-10-20";
+     var details = "This is a test event added to the database";
      
      $.ajax({
      type: "POST",
-     url: 'http://localhost/Guildford-Food-Network/addEvent.php',
+     url: 'addEvent.php',
      data:
      {
         'name' : name,
-        'password' : password,
-        'email' : email,
-        'type' : type
+        'dateEvent' : date,
+        'details' : details
      },
 
      success: function(response){

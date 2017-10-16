@@ -8,43 +8,22 @@ if($_SERVER['REQUEST_METHOD'] === 'POST')
 {
     //Set the key/value pairs
     $arr['name'] = $_POST['name'];
-    $arr['password'] = $_POST['password'];
-    $arr['email'] = $_POST['email'];
-    $arr['type'] = $_POST['type'];
+    $arr['dateEvent'] = $_POST['dateEvent'];
+    $arr['details'] = $_POST['details'];
 
-    
-    
-    
-    $stmt = $database->prepare('SELECT * FROM events WHERE email = :email');
-    $stmt->bindParam(":email", $arr['email']);
+
+    //Add to database
+    $stmt = $database->prepare('INSERT INTO events (name, dateEvent, details) VALUES (:name, :dateEvent, :details)');
+    $stmt->bindParam(":name", $arr['name']);
+    $stmt->bindParam(":dateEvent", $arr['dateEvent']);
+    $stmt->bindParam(":details", $arr['details']);
     $stmt->execute();
 
-    if($stmt->rowCount() < 1)
-    {
-        $arr['use'] = 'open';
-        //Add to database
-        $stmt = $database->prepare('INSERT INTO events (name, password, email, type) VALUES (:name, :password, :email, :type)');
-        $stmt->bindParam(":name", $arr['name']);
-        $stmt->bindParam(":password", md5($arr['password']));
-        $stmt->bindParam(":email", $arr['email']);
-        $stmt->bindParam(":type", $arr['type']);
-        $stmt->execute();
-
             
             
-        //Send back the id of new inserted user
-        $arr['lastInsertId'] = $database->lastInsertId();
+    //Send back the id of new inserted user
+    $arr['lastInsertId'] = $database->lastInsertId();
     
-    }
-
-    else
-    {
-        $arr['use'] = 'In use';
-    }
-    
-
-
-
 }
 
 else
